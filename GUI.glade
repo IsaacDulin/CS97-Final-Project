@@ -2,6 +2,21 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
+  <object class="GtkAdjustment" id="delta_adjustment">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="phi_adjustment">
+    <property name="upper">100</property>
+    <property name="step_increment">0.99999999977648257</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="pi_adjustment">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
   <object class="GtkWindow" id="window1">
     <property name="can_focus">False</property>
     <signal name="destroy" handler="on_window1_destroy" swapped="no"/>
@@ -10,14 +25,12 @@
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="homogeneous">True</property>
         <child>
-          <object class="GtkButton" id="button1">
-            <property name="label" translatable="yes">button</property>
+          <object class="GtkImage" id="graph_image">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="activate" handler="test" swapped="no"/>
-            <signal name="clicked" handler="test" swapped="no"/>
+            <property name="can_focus">False</property>
+            <property name="pixbuf">cs97-temp-img.png</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -26,33 +39,58 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScale" id="scale1">
+          <object class="GtkBox" id="box2">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
-            <property name="round_digits">1</property>
+            <property name="homogeneous">True</property>
+            <child>
+              <object class="GtkScale" id="pi_scale">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="adjustment">pi_adjustment</property>
+                <property name="round_digits">1</property>
+                <signal name="value-changed" handler="test" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScale" id="delta_scale">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="adjustment">delta_adjustment</property>
+                <property name="round_digits">1</property>
+                <signal name="value-changed" handler="test" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScale" id="phi_scale">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="adjustment">phi_adjustment</property>
+                <property name="round_digits">1</property>
+                <signal name="value-changed" handler="test" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="radiobutton1">
-            <property name="label" translatable="yes">radiobutton</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="xalign">0</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <signal name="group-changed" handler="test" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
           </packing>
         </child>
       </object>
