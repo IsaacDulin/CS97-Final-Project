@@ -12,12 +12,6 @@ calculating aggregate crime levels, and finding the centrality
 measurement.
 '''
 
-#Some questions:
-# 1) What is rho, spectral radius? Suspicion: Eigenvalues Centrality.
-# 2) Can we snipe your graph creation code?
-# 3) How to generate initial involvement (random)? 
-# 4) Condition for intercentrality 
-
 IMG_FILE = 'cs97-temp-img.png'
 
 import pygraphviz as pgv
@@ -186,7 +180,6 @@ class Model:
     self.graph = rg.coolGraph(n=n1, cluster_n=n2)
     self.refreshImage()
     return 0
-
 
   def moreConnectedPaperGraph(self):
     self.size = 12
